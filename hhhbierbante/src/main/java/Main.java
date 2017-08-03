@@ -1,5 +1,7 @@
 import entity.AppointRecord;
 import entity.AppointRecordFee;
+import entity.Phone;
+import entity.PhoneDetails;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
 import org.hibernate.boot.MetadataSources;
@@ -46,6 +48,7 @@ public class Main {
         //saveAppointRecord(session);
         //saveAppointRecordFee(session);
         //findAppointRecordFeeById(session, 1);
+        savePhone(session);
 
     }
 
@@ -87,5 +90,16 @@ public class Main {
         Query namedQuery = session.createQuery("from AppointRecordFee where appointId=" + appointId);
         Object singleResult = namedQuery.getSingleResult();
         return singleResult;
+    }
+
+    public static void savePhone(Session session) {
+        Phone phone = new Phone( "123-456-7890" );
+        PhoneDetails details = new PhoneDetails( "T-Mobile", "GSM" );
+
+        phone.addDetails( details );
+
+        session.save(phone);
+        session.getTransaction().commit();
+        session.close();
     }
 }

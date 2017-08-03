@@ -16,6 +16,8 @@
 
         <mapping class="entity.AppointRecord"/>
         <mapping class="entity.AppointRecordFee"/>
+        <mapping class="entity.Phone"/>
+        <mapping class="entity.PhoneDetails"/>
     </session-factory>
 
 </hibernate-configuration>
