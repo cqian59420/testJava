@@ -13,10 +13,6 @@ public class PhoneDetails {
 
     private String technology;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "phone_id")
-    private Phone phone;
-
     public PhoneDetails() {
     }
 
@@ -37,11 +33,5 @@ public class PhoneDetails {
         this.technology = technology;
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
 
-    public void setPhone(Phone phone) {
-        this.phone = phone;
-    }
 }

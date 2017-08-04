@@ -1,3 +1,5 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.AppointRecord;
 import entity.AppointRecordFee;
 import entity.Phone;
@@ -29,7 +31,7 @@ public class Main {
         // A SessionFactory is set up once for an application!
 
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure(new File("C:\\work\\testJava\\hhhbierbante\\src\\main\\java\\hibernate.cfg.xml")) // configures settings from hibernate.cfg.xml
+                .configure(new File("C:\\learn\\gits\\testJava\\hhhbierbante\\src\\main\\java\\hibernate.cfg.xml")) // configures settings from hibernate.cfg.xml
                 .build();
         try {
             sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
@@ -48,7 +50,9 @@ public class Main {
         //saveAppointRecord(session);
         //saveAppointRecordFee(session);
         //findAppointRecordFeeById(session, 1);
-        savePhone(session);
+       //savePhone(session);
+        getPhoneById(session,7L);
+        //updatePhoneDetail(session, 7L);
 
     }
 
@@ -95,11 +99,32 @@ public class Main {
     public static void savePhone(Session session) {
         Phone phone = new Phone( "123-456-7890" );
         PhoneDetails details = new PhoneDetails( "T-Mobile", "GSM" );
-
-        phone.addDetails( details );
+        session.save(details);
+        //session.flush();
+        phone.setDetails(details);
 
         session.save(phone);
         session.getTransaction().commit();
         session.close();
+    }
+    public static void updatePhoneDetail(Session session,Long phoneId) {
+        getPhoneById(session, phoneId);
+    }
+
+
+    public static Phone getPhoneById(Session session,Long phoneId){
+
+        Query query = session.createQuery("from Phone where id=:id");
+        query.setParameter("id", phoneId);
+        Phone singleResult = (Phone)query.getSingleResult();
+
+        try {
+            System.out.println(new ObjectMapper().writeValueAsString(singleResult));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        session.close();
+        return singleResult;
     }
 }

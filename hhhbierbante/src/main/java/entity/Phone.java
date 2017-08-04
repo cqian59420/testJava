@@ -12,8 +12,10 @@ public class Phone {
     @Column(name = "number")
     private String number;
 
-    @OneToOne(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "detailId")
     private PhoneDetails details;
+
     public Phone() {
     }
 
@@ -33,7 +35,7 @@ public class Phone {
         return details;
     }
 
-    public void addDetails(PhoneDetails details) {
+   /* public void addDetails(PhoneDetails details) {
         details.setPhone( this );
         this.details = details;
     }
@@ -43,5 +45,9 @@ public class Phone {
             details.setPhone( null );
             this.details = null;
         }
+    }*/
+
+    public void setDetails(PhoneDetails details) {
+        this.details = details;
     }
 }
