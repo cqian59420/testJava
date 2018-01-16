@@ -51,7 +51,7 @@ public class Main {
         //saveAppointRecordFee(session);
         //findAppointRecordFeeById(session, 1);
        //savePhone(session);
-        getPhoneById(session,7L);
+        //getPhoneById(session,7L);
         //updatePhoneDetail(session, 7L);
 
     }
@@ -74,7 +74,7 @@ public class Main {
 
     private static void saveAppointRecordFee(Session session) {
         AppointRecordFee appointRecordFee = new AppointRecordFee();
-        appointRecordFee.setAppointId(1);
+        appointRecordFee.setAppointId(8);
         appointRecordFee.setAppointTotalFee(new BigDecimal(100));
         appointRecordFee.setAppointDiscountFee(new BigDecimal(1));
         appointRecordFee.setAppointCouponFee(new BigDecimal(2));
@@ -90,6 +90,11 @@ public class Main {
         }
     }
 
+    public static Object findAppointRecordById(Session session, Integer appointId) {
+        Query namedQuery = session.createQuery("from AppointRecordFee where appointId=" + appointId);
+        Object singleResult = namedQuery.getSingleResult();
+        return singleResult;
+    }
     public static Object findAppointRecordFeeById(Session session, Integer appointId) {
         Query namedQuery = session.createQuery("from AppointRecordFee where appointId=" + appointId);
         Object singleResult = namedQuery.getSingleResult();

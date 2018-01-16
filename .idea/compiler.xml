@@ -2,15 +2,20 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hhhbierbante" />
+        <module name="vertx-start-project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hhhbierbante" target="1.5" />
+      <module name="hhhbierbante" target="1.8" />
+      <module name="testJava" target="1.8" />
+      <module name="vertLearn" target="1.5" />
+      <module name="vertx-start-project" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

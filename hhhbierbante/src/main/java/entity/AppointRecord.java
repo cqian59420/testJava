@@ -1,6 +1,8 @@
 package entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,6 +27,9 @@ public class AppointRecord implements Serializable{
     @Column(name = "CREATEDATE")
     @CreationTimestamp
     private Date createTime;
+
+    @Where("appointId")
+    private AppointRecordFee appointRecordFee;
 
 
     public Integer getAppointId() {

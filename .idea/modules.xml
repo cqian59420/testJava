@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hhhbierbante/hhhbierbante.iml" filepath="$PROJECT_DIR$/hhhbierbante/hhhbierbante.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/testJava.iml" filepath="$PROJECT_DIR$/.idea/testJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vertx-maven-starter/vertx-start-project.iml" filepath="$PROJECT_DIR$/vertx-maven-starter/vertx-start-project.iml" />
     </modules>
   </component>
 </project>
